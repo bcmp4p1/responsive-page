@@ -1,0 +1,579 @@
+@import "styles/variables";
+@import "styles/mixins";
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: $light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+p {
+  margin: 0;
+}
+
+.App {
+  text-align: center;
+  position: relative;
+
+  &-long {
+    min-height: 1074px;
+  }
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  display: flex;
+  width: 100%;
+  height: 100px;
+  background-color: $red;
+
+  &__container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+  }
+
+  &__logo {
+    height: 80px;
+  }
+
+  &__link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
+    width: 100%;
+
+    @include onTablet {
+      margin-right: 0;
+      margin-left: 160px;
+    }
+
+    @include onDesktop {
+      margin-left: 0;
+      justify-content: flex-start;
+    }
+  }
+
+  &__logos {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    width: 100%;
+  }
+}
+
+.container {
+  position: relative;
+  padding: 0 20px;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.content {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  min-height: calc(100vh - 100px);
+}
+
+.sidebar {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: $orange;
+  transition: all 0.3s;
+  padding: 30px 20px;
+
+  @include onTablet {
+    position: sticky;
+    top: 100px;
+    height: calc(100vh - 100px);
+    overflow: auto;
+    width: 270px;
+    margin-left: -20px;
+    margin-right: 20px;
+  }
+
+  @include onDesktop {
+    width: 300px;
+  }
+
+  &-hidden {
+    left: -100%;
+    max-height: calc(100vh - 100px);
+    overflow: hidden;
+
+    @include onTablet {
+      width: 0;
+      position: absolute;
+    }
+
+    @include onDesktop {
+      position: sticky;
+      top: 100px;
+      height: calc(100vh - 100px);
+      overflow: auto;
+      min-width: 300px;
+      margin-left: -20px;
+      margin-right: 20px;
+    }
+  }
+
+  &-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  &-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: $blue;
+    text-align: start;
+    margin: 10px 0 5px;
+    text-transform: uppercase;
+
+    @include onDesktop {
+      font-weight: 800;
+    }
+  }
+
+  &-item {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    justify-content: flex-start;
+  }
+
+  &-icon {
+    height: 30px;
+    width: 30px;
+  }
+
+  &-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: $light;
+
+    @include onDesktop {
+      font-size: 18px;
+    }
+  }
+}
+
+.image {
+  &-container {
+    display: flex;
+    position: relative;
+  }
+
+  &-description {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 2px 30px 2px 10px;
+    color: $light;
+    font-weight: 600;
+    background: linear-gradient(to right, #141E46, rgba(21, 22, 77, 0));
+  }
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  width: 100%;
+  justify-content: center;
+  margin-bottom: 30px;
+
+  @include onTablet {
+    width: fit-content;
+    margin-bottom: 0;
+  }
+}
+
+.button {
+  width: 100px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $blue;
+  color: $light;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+
+  @include onDesktop {
+    font-size: 18px;
+    width: 120px;
+    height: 50px;
+  }
+}
+
+.menu {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+
+  @include onDesktop {
+    display: none;
+  }
+
+  &__logo {
+    height: 40px;
+  }
+}
+
+.main {
+  visibility: visible;
+  display: flex;
+  flex-direction: column;
+  padding: 30px 0 0;
+
+  @include onTablet {
+    & .read-container {
+      display: grid;
+      grid-template-columns: repeat(2, 300px);
+      justify-content: center;
+    }
+  }
+
+  @include onDesktop {
+    & .read-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      justify-content: center;
+    }
+  }
+
+  &-hidden {
+    visibility: hidden;
+    max-height: 500px;
+    overflow: hidden;
+
+    @include onTablet {
+      visibility: visible;
+      max-height: unset;
+      overflow: unset;
+      max-width: calc(100% - 270px);
+
+      & .read-container {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+
+    @include onDesktop {
+      & .read-container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        justify-content: center;
+      }
+    }
+
+    @include onDesktop {
+      max-width: calc(100% - 300px);
+    }
+  }
+
+  &-title {
+    margin: 30px 0 20px;
+    font-size: 24px;
+    font-weight: 700;
+    color: $blue;
+    text-align: start;
+
+    @include onDesktop {
+      font-size: 30px;
+    }
+  }
+}
+
+.news {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 40px;
+
+  @include onDesktop {
+    flex-direction: row;
+  }
+
+  &-main {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 10px;
+
+    @include onDesktop {
+      width: 60%;
+    }
+  }
+
+  &-photo {
+    width: 100%;
+  }
+
+  &-title {
+    font-weight: 700;
+    font-size: 24px;
+    cursor: pointer;
+    text-decoration: underline;
+    color: $blue;
+    text-align: start;
+
+    @include onDesktop {
+      font-size: 32px;
+    }
+  }
+
+  &-minor {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+
+    & .news-photo {
+      width: 160px;
+      height: 100px;
+    }
+
+    & .news-title {
+      font-size: 18px;
+
+      @include onDesktop {
+        font-size: 20px;
+      }
+    }
+  }
+
+  &-all {
+    color: $red;
+    font-size: 18px;
+    font-weight: 800;
+  }
+
+  &-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    @include onDesktop {
+      width: 40%;
+    }
+  }
+}
+
+.matches {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 90px;
+
+  @include onTablet {
+    width: 400px;
+    margin: 0 auto 90px;
+  }
+
+  @include onDesktop {
+    width: 500px;
+  }
+
+  &-date {
+    color: $blue;
+    font-size: 16px;
+    font-weight: 700;
+
+    @include onDesktop {
+      font-size: 22px;
+    }
+  }
+}
+
+.match {
+  display: grid;
+  grid-template-columns: 1fr 50px 1fr;
+  gap: 5px;
+  background-color: $blue;
+  border-radius: 6px;
+  padding: 10px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgba(20, 30, 70, 0.77);
+  }
+
+  & p {
+    font-size: 16px;
+    color: $light;
+    font-weight: 600;
+
+    @include onDesktop {
+      font-size: 20px;
+    }
+  }
+
+  & :first-child {
+    text-align: end;
+  }
+
+  & :nth-child(2) {
+    text-align: center;
+  }
+
+  & :nth-child(3) {
+    text-align: start;
+  }
+}
+
+.read {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin: 0 -20px;
+  padding: 30px;
+  background-color: rgba(20, 30, 70, 0.52);
+
+  &-title {
+    color: $light;
+    text-align: start;
+    font-size: 36px;
+    font-weight: 800;
+
+    @include onDesktop {
+      font-size: 44px;
+    }
+  }
+
+  &-container {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+  }
+
+  &-item {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    align-items: center;
+    width: 300px;
+
+    @include onDesktop {
+      width: unset;
+    }
+  }
+
+  &-number {
+    color: $orange;
+    text-align: start;
+    font-size: 40px;
+    font-weight: 700;
+
+    @include onDesktop {
+      font-size: 50px;
+      font-weight: 800;
+    }
+  }
+
+  &-text {
+    color: $blue;
+    text-align: start;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+
+    @include onDesktop {
+      font-size: 22px;
+    }
+
+    &:hover {
+      color: rgb(50, 66, 134);
+    }
+  }
+}
+
+.footer {
+  background-color: $blue;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding: 40px 20px 20px;
+
+  &-title {
+    color: $light;
+    font-size: 36px;
+    font-weight: 800;
+  }
+
+  &-hidden {
+    display: none;
+
+    @include onTablet {
+      display: flex;
+    }
+  }
+}
+
+.links {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+
+  @include onTablet {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  @include onDesktop {
+    width: 1000px;
+    margin: 0 auto;
+  }
+}
+
+.link {
+  color: $light;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.text {
+  color: $light;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.mobile {
+  @include onTablet {
+    display: none;
+  }
+}
+
+.tablet {
+  display: none;
+
+  @include onTablet {
+    display: inherit;
+  }
+}
