@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/responsive-page/static/css/main.665b2e8e.css",
+    "main.css": "/responsive-page/static/css/main.dcf19774.css",
     "main.js": "/responsive-page/static/js/main.3fc21e0d.js",
     "static/js/787.0e511234.chunk.js": "/responsive-page/static/js/787.0e511234.chunk.js",
     "static/media/EPL_Manager_Of_The_Season_(1).webp": "/responsive-page/static/media/EPL_Manager_Of_The_Season_(1).096be84f28d8f625c2d9.webp",
@@ -19,12 +19,12 @@
     "static/media/italy-flag-circular-17751.svg": "/responsive-page/static/media/italy-flag-circular-17751.94106a283bdaebaa1b25bf824471a7ff.svg",
     "static/media/open-menu-6208.svg": "/responsive-page/static/media/open-menu-6208.c785b2229fbc5460cd632f2b4942d8a7.svg",
     "index.html": "/responsive-page/index.html",
-    "main.665b2e8e.css.map": "/responsive-page/static/css/main.665b2e8e.css.map",
+    "main.dcf19774.css.map": "/responsive-page/static/css/main.dcf19774.css.map",
     "main.3fc21e0d.js.map": "/responsive-page/static/js/main.3fc21e0d.js.map",
     "787.0e511234.chunk.js.map": "/responsive-page/static/js/787.0e511234.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.665b2e8e.css",
+    "static/css/main.dcf19774.css",
     "static/js/main.3fc21e0d.js"
   ]
 }
